@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "SideQuest Chrome Extension",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "A Chrome Extenstion That lets you download beatsaber songs to SideQuest",
+    "description": "The description of the application"
+  }
+}
