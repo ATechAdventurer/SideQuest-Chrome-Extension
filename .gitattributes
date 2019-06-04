@@ -1,1 +1,4 @@
 * text=auto
+dist
+*.pem
+*.crx
