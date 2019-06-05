@@ -1,10 +1,14 @@
 {
   "appName": {
-    "message": "SideQuest Chrome Extension",
+    "message": "SideQuest Bsaber Extension",
     "description": "The name of the application"
   },
+  "appShortName": {
+    "message": "SideQuest B",
+    "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+  },
   "appDescription": {
-    "message": "A Chrome Extenstion That lets you download beatsaber songs to SideQuest",
+    "message": "An extension that allows you to install bsaber maps into sidequest",
     "description": "The description of the application"
   }
 }

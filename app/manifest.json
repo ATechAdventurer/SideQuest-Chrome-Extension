@@ -1,36 +1,27 @@
 {
-  "name": "SideQuest Chrome Extension",
-  "version": "0.0.1",
+  "name": "__MSG_appName__",
+  "short_name": "__MSG_appShortName__",
+  "description": "__MSG_appDescription__",
+  "version": "0.0.0",
   "manifest_version": 2,
-  "description": "An extension that allows you to download beatsaber maps to SideQuest",
+  "default_locale": "en",
   "icons": {
     "16": "images/icon-16.png",
-    "19": "images/icon-19.png",
-    "38": "images/icon-38.png",
     "128": "images/icon-128.png"
   },
-  "default_locale": "en",
   "background": {
     "scripts": [
-      "scripts/chromereload.js",
       "scripts/background.js"
     ]
-  },
-  "permissions": [
-    "http://*/*",
-    "https://*/*",
-    "contentSettings",
-    "webRequest"
-  ],
-  "options_ui": {
-    "page": "options.html",
-    "chrome_style": true
   },
   "content_scripts": [
     {
       "matches": [
-        "http://bsaber.com/*",
-        "https://bsaber.com/*"
+        "http://*/*",
+        "https://*/*"
+      ],
+      "css": [
+        "styles/contentscript.css"
       ],
       "js": [
         "scripts/contentscript.js"
@@ -38,15 +29,5 @@
       "run_at": "document_end",
       "all_frames": false
     }
-  ],
-  "browser_action": {
-    "default_icon": {
-      "16": "images/icon-16.png",
-      "19": "images/icon-19.png",
-      "38": "images/icon-38.png",
-      "128": "images/icon-128.png"
-    },
-    "default_title": "SideQuest Chrome Extension",
-    "default_popup": "popup.html"
-  }
+  ]
 }
