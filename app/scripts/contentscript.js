@@ -8,21 +8,22 @@ function htmlToElement(html) {
 }
 
 function BeatSaver() {
-    console.log("Found BeatSaver")
-    var buttons = document.querySelectorAll("a.button");
-    console.log(buttons, typeof(buttons))
-    var downloadButtons = []
-    buttons.forEach((button) => {
-        if(button.textContent == "Download Zip"){
-            downloadButtons.push(button)
-        }
-    })
-    downloadButtons.forEach((button) => {
-        var songDownloadURL = button.href;
-        button.parentElement.appendChild(htmlToElement("<a class='button' href='sidequest://bsaber#" + songDownloadURL + "'>Download With SideQuest</a>"))
-    })
-    
+    var checkExist = setInterval(function() {
+        if (document.querySelectorAll("div.beatmap-content").length) {
+            var songs = document.querySelectorAll("div.beatmap-content");
 
+            songs.forEach((song) => {
+                var songID = song.previousElementSibling.firstElementChild.src.split("/")[4];
+                var songDownloadURL = `https://beatsaver.com/api/download/key/${songID}`;
+                song.firstElementChild.appendChild(
+                    htmlToElement(
+                        `<a class="button" style="margin-top: 10px;" href="sidequest://bsaber#${songDownloadURL}">Download With SideQuest</a>`
+                    )
+                )
+            });
+            clearInterval(checkExist);
+        }
+    }, 100);
 }
 
 function BSaber() {
@@ -58,3 +59,4 @@ if(location.href.includes("bsaber.com")){
 }else if(location.href.includes("beatsaver.com")){
     BeatSaver()
 }
+
