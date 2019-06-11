@@ -27,3 +27,7 @@ The build tool also defines a variable named `process.env.NODE_ENV` in your scri
 ## Docs
 
 * [webextension-toolbox](https://github.com/HaNdTriX/webextension-toolbox)
+
+# SideQuest-Chrome-Extension 
+
+Download it here [https://chrome.google.com/webstore/detail/sidequest-chrome-extensio/fmifajifkgfamekjpeanjmjjiimfhbjl](https://chrome.google.com/webstore/detail/sidequest-chrome-extensio/fmifajifkgfamekjpeanjmjjiimfhbjl)
