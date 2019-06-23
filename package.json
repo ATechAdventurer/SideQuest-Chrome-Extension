@@ -1,6 +1,6 @@
 {
   "name": "SideQuest-Bsaber-Extension",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "An extension that allows you to install bsaber maps into sidequest",
   "scripts": {
     "dev": "webextension-toolbox dev",
