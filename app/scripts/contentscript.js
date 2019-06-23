@@ -8,20 +8,35 @@ function htmlToElement(html) {
 }
 
 function BeatSaver() {
-    var containerStyle = "display: flex; flex-direction: column-reverse;"
-    var buttonStyle = "margin-right:10px; padding: 20px 21px;"
     var checkExist = setInterval(function() {
-        if (document.querySelectorAll("div.beatmap-content").length) {
-            var songs = document.querySelectorAll("div.beatmap-content");
+        if (document.querySelectorAll("div.container.has-footer.side-pad").length) {
 
-            songs.forEach((song) => {
-                var songDownloadURL = song.querySelectorAll(".right a")[0].href;
-                song.querySelectorAll("div.right")[0].before(
-                    htmlToElement(
-                        `<div class="right" style="${containerStyle}"><a class="button" style="${buttonStyle}" href="sidequest://bsaber#${songDownloadURL}">Download With SideQuest</a></div>`
-                    )
-                )
-            });
+            var containerStyle = "display: flex; flex-direction: column-reverse;";
+            var buttonStyle = "margin-right:10px; padding: 20px 21px;";
+            var callback = function(mutationsList, observer) {
+                mutationsList.forEach(function(mutation) {
+                    if (document.querySelectorAll("div.beatmap-content").length) {
+                        var songs = document.querySelectorAll("div.beatmap-content");
+
+                        songs.forEach((song) => {
+                            if (song.querySelectorAll("a.sidequest").length === 0) {
+                                var songDownloadURL = song.querySelectorAll(".right a")[0].href;
+                                song.querySelectorAll("div.right")[0].before(
+                                    htmlToElement(
+                                        `<div class="right" style="${containerStyle}"><a class="button sidequest" style="${buttonStyle}" href="sidequest://bsaber#${songDownloadURL}">Download With SideQuest</a></div>`
+                                    )
+                                )
+                            }
+
+                        });
+                    }
+                });
+            }
+
+            var targetNode = document.querySelector("div.container.has-footer.side-pad");
+            var config = { attributes: true, childList: true, subtree: true };
+            var observer = new MutationObserver(callback);
+            observer.observe(targetNode, config);
             clearInterval(checkExist);
         }
     }, 100);
