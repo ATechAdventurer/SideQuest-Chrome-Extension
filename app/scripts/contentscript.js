@@ -8,16 +8,17 @@ function htmlToElement(html) {
 }
 
 function BeatSaver() {
+    var containerStyle = "display: flex; flex-direction: column-reverse;"
+    var buttonStyle = "margin-right:10px; padding: 20px 21px;"
     var checkExist = setInterval(function() {
         if (document.querySelectorAll("div.beatmap-content").length) {
             var songs = document.querySelectorAll("div.beatmap-content");
 
             songs.forEach((song) => {
-                var songID = song.previousElementSibling.firstElementChild.src.split("/")[4];
-                var songDownloadURL = `https://beatsaver.com/api/download/key/${songID}`;
-                song.firstElementChild.appendChild(
+                var songDownloadURL = song.querySelectorAll(".right a")[0].href;
+                song.querySelectorAll("div.right")[0].before(
                     htmlToElement(
-                        `<a class="button" style="margin-top: 10px;" href="sidequest://bsaber#${songDownloadURL}">Download With SideQuest</a>`
+                        `<div class="right" style="${containerStyle}"><a class="button" style="${buttonStyle}" href="sidequest://bsaber#${songDownloadURL}">Download With SideQuest</a></div>`
                     )
                 )
             });
